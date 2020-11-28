@@ -1,0 +1,17 @@
+.csBackgroundColor {
+  background-color: #222333;
+  justify-content: center;
+}
+
+.csMenu {
+  font-size: 14px;
+}
+
+.csMenuLinkActive {
+  color: magenta;
+  font-weight: bold;
+}
+
+.csMenuLink {
+  color: grey;
+}

@@ -1,0 +1,21 @@
+h2 {
+  color: grey;
+}
+
+.csCard {
+  background-color: #222330;
+  font-family: Arial;
+  margin: 1rem;
+}
+
+.csUsername {
+  color: white;
+}
+
+.csComment {
+  color: grey;
+}
+
+.csProfilePicture {
+  width: 4rem;
+}

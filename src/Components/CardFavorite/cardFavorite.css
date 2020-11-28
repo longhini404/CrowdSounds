@@ -1,0 +1,22 @@
+h2 {
+  color: grey;
+}
+
+.csCard {
+  background-color: #222330;
+  text-align: center;
+  font-family: Arial;
+  margin: 1rem;
+}
+
+.csTitle {
+  color: grey;
+}
+
+.heart {
+  color: white;
+}
+
+.csProfilePicture {
+  width: 4rem;
+}

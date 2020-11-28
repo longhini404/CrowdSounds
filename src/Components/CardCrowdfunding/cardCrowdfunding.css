@@ -1,0 +1,25 @@
+.csCard {
+  background-color: #222330;
+  font-family: Arial;
+}
+
+.csArtistPicture {
+  width: 4rem;
+}
+
+.csTitle {
+  color: white;
+}
+
+.csDiscription {
+  color: grey;
+}
+
+.csProgressBar {
+  background-color: grey;
+}
+
+.csButton {
+  background-color: magenta;
+  color: white;
+}

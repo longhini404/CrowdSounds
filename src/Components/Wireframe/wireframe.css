@@ -1,0 +1,12 @@
+.csLogo {
+    width: 4rem;
+    border-radius: 100%;
+}
+
+.csBrand {
+    color: fuchsia;
+    text-shadow: blueviolet;
+    font-size: x-large;
+    padding-left: 2rem;
+    padding-top: 1rem;
+}

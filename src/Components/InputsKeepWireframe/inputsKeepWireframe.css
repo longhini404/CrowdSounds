@@ -1,0 +1,31 @@
+.csInput {
+  background-color: #222330;
+  border-color: darkviolet;
+}
+
+.csLabel {
+  color: grey;
+  font-weight: bold;
+}
+
+.csButton {
+  background-color: magenta;
+  color: white;
+}
+
+.custom-file-label {
+  background-color: #222330;
+  border-color: darkviolet;
+  color: grey;
+  padding: 6rem;
+}
+
+.custom-file-label::after {
+  background-color: #222330;
+  border-color: #222330;
+  color: #222330;
+}
+
+section {
+  color: magenta;
+}

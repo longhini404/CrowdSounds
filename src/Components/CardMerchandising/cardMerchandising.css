@@ -1,0 +1,19 @@
+.csCard {
+  background-color: #222330;
+  font-family: Arial;
+  margin: 1rem;
+}
+
+.csTitle {
+  color: white;
+  text-align: center;
+}
+
+.csDescription {
+  color: grey;
+  text-align: center;
+}
+
+.csPrice {
+  color: magenta;
+}

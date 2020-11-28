@@ -1,0 +1,21 @@
+.navbar-light .navbar-brand {
+  color: magenta;
+  font-family: Impact;
+  text-shadow: 0 0 3px #ff0000, 0 0 5px #0000ff;
+}
+
+.navbar-light .navbar-toggler {
+  border-color: magenta;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: darkviolet;
+  font-weight: bolder;
+}
+
+.navbar-light .navbar-nav .nav-item {
+  color: darkviolet;
+  font-weight: bolder;
+  padding-top: 8px;
+  padding-right: 2rem;
+}

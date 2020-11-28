@@ -1,0 +1,17 @@
+.csLogoSize {
+  width: 4rem;
+}
+
+.csLogoPosition {
+  width: 4rem;
+  padding-top: 2rem;
+}
+
+.csBrandText {
+  color: magenta;
+  text-shadow: 0 0 3px #ff0000, 0 0 6px #0000ff;
+  font-size: x-large;
+  font-family: Impact;
+  padding-left: 2rem;
+  padding-top: 3rem;
+}

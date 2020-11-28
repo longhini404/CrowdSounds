@@ -1,0 +1,18 @@
+.csBackgroundColor {
+  background-color: #222333;
+  justify-content: center;
+}
+
+.csMenu {
+  font-size: 14px;
+  justify-content: center;
+}
+
+.csName {
+  font-size: 2rem;
+}
+
+.csIcon {
+  color: white;
+  text-align: center;
+}

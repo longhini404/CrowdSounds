@@ -1,0 +1,21 @@
+.csBackgroundColor {
+  background-color: #222333;
+  justify-content: center;
+}
+
+.csName {
+  font-size: 2rem;
+}
+
+.btn-dark {
+  color: white;
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.btn-dark:not(:disabled):not(.disabled).active,
+.show > .btn-dark.dropdown-toggle {
+  color: red;
+  background-color: transparent;
+  border-color: transparent;
+}

@@ -1,0 +1,24 @@
+.csInput {
+  background-color: #222330;
+  border-color: darkviolet;
+}
+
+.csLabel {
+  color: grey;
+  font-weight: bold;
+}
+
+.csButton {
+  background-color: magenta;
+  color: white;
+}
+
+.modal-content {
+  background-color: transparent !important;
+}
+
+@media (max-width: 420px) {
+  section {
+    width: 20rem;
+  }
+}
