@@ -36,17 +36,11 @@ class App extends Component {
             <Route exact path="/" component={Home} />
             <Route exact path="/home" component={Home} />
             <Route exact path="/homeArtist" component={HomeArtist} />
-            <Route exact path="/homeArtist/:id" component={HomeArtist} />
 
             <Route exact path="/homeUser" component={HomeUser} />
-            <Route exact path="/homeUser/:id" component={HomeUser} />
 
-            <Route exact path="/donate/:id" component={Donate} />
-            <Route
-              exact
-              path="/crowdfunding/:id"
-              component={SingleCrowdfunding}
-            />
+            <Route exact path="/donate" component={Donate} />
+            <Route exact path="/crowdfunding" component={SingleCrowdfunding} />
             <Route
               exact
               path="/keepCrowdfunding"
@@ -55,8 +49,8 @@ class App extends Component {
 
             <Route exact path="/createArtist" component={CreateArtist} />
 
-            <Route exact path="/keepArtist/:id" component={KeepArtist} />
-            <Route exact path="/keepUser/:id" component={KeepUser} />
+            <Route exact path="/keepArtist" component={KeepArtist} />
+            <Route exact path="/keepUser" component={KeepUser} />
 
             <Route exact path="/HomeADM" component={HomeADM} />
             <Route

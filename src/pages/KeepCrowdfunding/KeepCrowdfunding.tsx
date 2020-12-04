@@ -1,14 +1,11 @@
 import React from "react";
 import { Row, Col, Container } from "react-bootstrap";
 import "./keepCrowdfunding.css";
-import { History } from "history";
 
 import Header from "../../Components/Header/Header";
 import InputsKeepCrowdfunding from "../../Components/InputsKeepCrowdfunding/InputsKeepCrowdfunding";
 
-type Props = {
-  history: Pick<History, "push">;
-};
+type Props = {};
 
 const KeepCrowdfunding: React.FC<Props> = (props) => {
   return (
@@ -23,9 +20,7 @@ const KeepCrowdfunding: React.FC<Props> = (props) => {
           <Col>
             <p>Crowdfunding</p>
             <Container>
-              <InputsKeepCrowdfunding
-                history={props.history}
-              ></InputsKeepCrowdfunding>
+              <InputsKeepCrowdfunding></InputsKeepCrowdfunding>
             </Container>
           </Col>
         </Row>

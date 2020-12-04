@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Col, Container, Row, Button } from "react-bootstrap";
 import "./homeArtist.css";
 
@@ -7,42 +7,19 @@ import CardMerchandising from "../../Components/CardMerchandising/CardMerchandis
 import CardBiography from "../../Components/CardBiography/CardBiography";
 import CardDiscography from "../../Components/CardDiscography/CardDiscography";
 
-import { Link, match } from "react-router-dom";
-import { Artist } from "../../types/Artist";
-import ArtistService from "../../services/ArtistService";
+import { Link } from "react-router-dom";
 import ArtistHeader from "../../Components/ArtistHeader/ArtistHeader";
 
 import Tabs from "react-bootstrap/Tabs";
 import Tab from "react-bootstrap/Tab";
-import jwt_decode from "jwt-decode";
-import UserService from "../../services/UserService";
 
-type Props = {
-  match: match<{ id: string }>;
-};
+type Props = {};
 
 const HomeArtist: React.FC<Props> = (props) => {
-  const [dataArtist, setDataArtist] = useState<Artist>({} as Artist);
-  const [artistToken, setArtistToken] = useState<number>(0);
-  let tokenStorage = localStorage.getItem("jwtToken");
-  let token: any = tokenStorage !== null ? jwt_decode(tokenStorage) : null;
-
-  useEffect(() => {
-    ArtistService.load(props.match.params.id).then((response) => {
-      setDataArtist(response.data);
-    });
-
-    UserService.getIdArtista(token?.denyonlyprimarygroupsid).then(
-      (response) => {
-        setArtistToken(response.data.id);
-      }
-    );
-  }, [props.match.params.id]);
-
   return (
     <React.Fragment>
       <div className="csBackgroundColor">
-        <ArtistHeader artist={dataArtist} />
+        <ArtistHeader />
 
         <Col className="pt-4 pb-4">
           <Tabs
@@ -51,12 +28,7 @@ const HomeArtist: React.FC<Props> = (props) => {
           >
             <Tab eventKey="Crowdfundings" title="Crowdfundings">
               <Container className="pt-2 pb-2">
-                {dataArtist?.crowdfundings &&
-                  dataArtist?.crowdfundings.map((crowdfundingsArtist) => (
-                    <CardCrowdfunding
-                      dataCrowdfunding={crowdfundingsArtist}
-                    ></CardCrowdfunding>
-                  ))}
+                <CardCrowdfunding></CardCrowdfunding>
               </Container>
             </Tab>
 
@@ -64,27 +36,19 @@ const HomeArtist: React.FC<Props> = (props) => {
               <Container className="pt-2 pb-2">
                 <Row>
                   <Col>
-                    {dataArtist?.merch &&
-                      dataArtist?.merch.map((merch) => (
-                        <CardMerchandising
-                          dataMerch={merch}
-                        ></CardMerchandising>
-                      ))}
+                    <CardMerchandising></CardMerchandising>
                   </Col>
                 </Row>
-
-                {dataArtist.id === artistToken && (
-                  <Row className="mt-4 mb-4 justify-content-center">
-                    <Button
-                      variant="btn-block"
-                      className="csButton"
-                      href="../KeepMerchandising"
-                      type="submit"
-                    >
-                      Cadastrar Merchandising
-                    </Button>
-                  </Row>
-                )}
+                <Row className="mt-4 mb-4 justify-content-center">
+                  <Button
+                    variant="btn-block"
+                    className="csButton"
+                    href="../KeepMerchandising"
+                    type="submit"
+                  >
+                    Cadastrar Merchandising
+                  </Button>
+                </Row>
               </Container>
 
               <Row className="text-center pt-4">
@@ -97,38 +61,21 @@ const HomeArtist: React.FC<Props> = (props) => {
 
             <Tab eventKey="Biografia" title="Biografia">
               <Container className="pt-2 pb-2">
-                <CardBiography
-                  biography={dataArtist.biografia}
-                  integrantes={dataArtist.integrantes}
-                  picture={dataArtist.fotoCapa}
-                  genero={dataArtist.genero}
-                ></CardBiography>
+                <CardBiography></CardBiography>
 
-                {dataArtist?.discografias &&
-                  dataArtist?.discografias.map((discography) => (
-                    <CardDiscography
-                      dataDiscography={discography}
-                    ></CardDiscography>
-                  ))}
+                <CardDiscography></CardDiscography>
 
-                {dataArtist.id === artistToken && (
-                  <Row className="mt-4 mb-4 justify-content-center">
-                    <Link
-                      to={(location: any) => ({
-                        ...location,
-                        pathname: `/keepDiscography`,
-                      })}
+                <Row className="mt-4 mb-4 justify-content-center">
+                  <Link to="keepDiscography">
+                    <Button
+                      variant="btn-block"
+                      className="csButton"
+                      type="submit"
                     >
-                      <Button
-                        variant="btn-block"
-                        className="csButton"
-                        type="submit"
-                      >
-                        Cadastrar Discografia
-                      </Button>
-                    </Link>
-                  </Row>
-                )}
+                      Cadastrar Discografia
+                    </Button>
+                  </Link>
+                </Row>
               </Container>
             </Tab>
           </Tabs>

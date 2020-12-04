@@ -1,68 +1,16 @@
-import React, { useState } from "react";
-import { Container, Tabs, Tab, Row, Col, Button, Modal } from "react-bootstrap";
+import React from "react";
+import { Container, Tabs, Tab, Row, Col, Button } from "react-bootstrap";
 
 import Form from "react-bootstrap/Form";
 import "./login.css";
 
 import Brand from "../../Components/Brand/Brand";
 
-import { History } from "history";
-import { LoginForm } from "../../types/LoginForm";
-import { SignUpForm } from "../../types/SignUpForm";
-import UserService from "../../services/UserService";
-import setAuthToken from "../../utils/setAuthToken";
-import swal from "sweetalert";
-import { useForm } from "react-hook-form";
-
-import { LoaderProvider, useLoading, Bars } from "@agney/react-loading";
 import SignUp from "../SignUp/SignUp";
 
-type Props = {
-  history: Pick<History, "push">;
-};
-
-function Loading() {
-  const { containerProps, indicatorEl } = useLoading({
-    loading: true,
-  });
-  return <section {...containerProps}>{indicatorEl}</section>;
-}
+type Props = {};
 
 const Login: React.FC<Props> = (props) => {
-  const [show, setShow] = useState(false);
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
-  const { register, handleSubmit, errors } = useForm();
-
-  const onSubmitLogin = (data: LoginForm) => {
-    handleShow();
-    UserService.login(data)
-      .then((res) => {
-        try {
-          localStorage.setItem("jwtToken", res.data.token);
-          setAuthToken(res.data.token);
-          props.history.push(`/home`);
-        } catch (err) {
-          handleClose();
-          swal({
-            title: "Não foi possível realizar o login",
-            text: err.response.data,
-            icon: "warning",
-          });
-        }
-      })
-      .catch((err) => {
-        handleClose();
-        swal({
-          title: "Não foi possível realizar o login",
-          text: err.response.data.Message,
-          icon: "warning",
-        });
-      });
-  };
-
   return (
     <React.Fragment>
       <div className="csBackgroundColor">
@@ -73,7 +21,7 @@ const Login: React.FC<Props> = (props) => {
         <Tabs className="justify-content-center" defaultActiveKey="Entrar">
           <Tab eventKey="Entrar" title="Entrar">
             <Container className="mt-4 mb-4">
-              <Form onSubmit={handleSubmit(onSubmitLogin)}>
+              <Form>
                 <Row>
                   <Col>
                     <Form.Label className="csLabel">
@@ -83,7 +31,6 @@ const Login: React.FC<Props> = (props) => {
                       className="csInput"
                       id="userOrEmail"
                       name="userName"
-                      ref={register({ required: true })}
                     />
                   </Col>
                 </Row>
@@ -98,7 +45,6 @@ const Login: React.FC<Props> = (props) => {
                       type="password"
                       minLength={6}
                       maxLength={20}
-                      ref={register({ required: true })}
                     />
                   </Col>
                 </Row>
@@ -134,14 +80,9 @@ const Login: React.FC<Props> = (props) => {
           </Tab>
 
           <Tab eventKey="Cadastrar-se" title="Cadastrar-se">
-            <SignUp history={props.history}></SignUp>
+            <SignUp></SignUp>
           </Tab>
         </Tabs>
-        <Modal show={show} onHide={handleClose} className="csModalLoading">
-          <LoaderProvider indicator={<Bars />}>
-            <Loading />
-          </LoaderProvider>
-        </Modal>
       </div>
     </React.Fragment>
   );

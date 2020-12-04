@@ -1,39 +1,19 @@
-import React, { useEffect, useState } from "react";
-import { Row, Col, Container, Nav, Button } from "react-bootstrap";
+import React from "react";
+import { Row, Col, Container, Nav } from "react-bootstrap";
 import "./artistADM.css";
 
 import Header from "../../Components/Header/Header";
-// import SearchBar from "../../Components/SearchBar/SearchBar";
+import SearchBar from "../../Components/SearchBar/SearchBar";
 import ProfilePictureUser from "../../Components/ProfilePictureUser/ProfilePictureUser";
 import SearchBarADM from "../../Components/SearchBarADM/SearchBarADM";
 import CardArtistADM from "../../Components/CardArtistADM/CardArtistADM";
 
 import { FaPencilAlt } from "react-icons/fa";
-import ArtistService from "../../services/ArtistService";
-import swal from "sweetalert";
-import { Artist } from "../../types/Artist";
-
 import { Link } from "react-router-dom";
 
 type Props = {};
 
 const ArtistADM: React.FC<Props> = (props) => {
-  const [artists, setArtists] = useState<Artist[]>([]);
-
-  useEffect(() => {
-    ArtistService.findAll()
-      .then((res) => {
-        setArtists(res.data);
-      })
-      .catch((err) => {
-        swal({
-          title: "Não foi possível carregar os artistas",
-          text: err.response.data.Message,
-          icon: "warning",
-        });
-      });
-  }, []);
-
   return (
     <React.Fragment>
       <div className="csBackgroundColor">
@@ -45,13 +25,13 @@ const ArtistADM: React.FC<Props> = (props) => {
 
         <Container>
           <Col className="pt-4">
-            {/* <SearchBar></SearchBar> */}
+            <SearchBar></SearchBar>
           </Col>
         </Container>
 
         <Row className="pt-2">
           <Col>
-            <ProfilePictureUser data={"a"}></ProfilePictureUser>
+            <ProfilePictureUser></ProfilePictureUser>
           </Col>
         </Row>
 
@@ -96,8 +76,7 @@ const ArtistADM: React.FC<Props> = (props) => {
         </Container>
 
         <Container className="pb-4">
-          {artists &&
-            artists.map((artist) => <CardArtistADM artist={artist} />)}
+          <CardArtistADM />
         </Container>
       </div>
     </React.Fragment>

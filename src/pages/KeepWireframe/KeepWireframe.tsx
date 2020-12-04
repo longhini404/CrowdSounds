@@ -3,7 +3,7 @@ import { Row, Col, Container } from "react-bootstrap";
 import "./keepWireframe.css";
 
 import Header from "../../Components/Header/Header";
-// import SearchBar from "../../Components/SearchBar/SearchBar";
+import SearchBar from "../../Components/SearchBar/SearchBar";
 import InputsKeepWireframe from "../../Components/InputsKeepWireframe/InputsKeepWireframe";
 
 type Props = {};
@@ -20,7 +20,7 @@ const KeepWireframe: React.FC<Props> = (props) => {
 
         <Container>
           <Col className="pt-4">
-            {/* <SearchBar></SearchBar> */}
+            <SearchBar></SearchBar>
           </Col>
         </Container>
 

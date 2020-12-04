@@ -1,76 +1,16 @@
-import React, { useState } from "react";
-import { Container, Row, Col, Button, Modal } from "react-bootstrap";
+import React from "react";
+import { Container, Row, Col, Button } from "react-bootstrap";
 import "./inputsCreateArtist.css";
 
 import Form from "react-bootstrap/Form";
-import { History } from "history";
-import { useForm } from "react-hook-form";
-import swal from "sweetalert";
-import { CreateArtistForm } from "../../types/CreateArtistForm";
-import ArtistService from "../../services/ArtistService";
-import getBase64 from "../../utils/getBase64";
 
-import { LoaderProvider, useLoading, Bars } from "@agney/react-loading";
-import jwt_decode from "jwt-decode";
-
-type Props = {
-  history: Pick<History, "push">;
-};
-
-function Loading() {
-  const { containerProps, indicatorEl } = useLoading({
-    loading: true,
-  });
-  return <section {...containerProps}>{indicatorEl}</section>;
-}
+type Props = {};
 
 const InputsCreateArtist: React.FC<Props> = (props) => {
-  const [show, setShow] = useState(false);
-
-  const [image, setImage] = useState<any>();
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
-  const { register, handleSubmit, errors } = useForm();
-
-  let tokenStorage = localStorage.getItem("jwtToken");
-  let token: any = tokenStorage !== null ? jwt_decode(tokenStorage) : null;
-
-  const onSubmit = (data: CreateArtistForm) => {
-    handleShow();
-    ArtistService.create({
-      ...data,
-      arquivo: image,
-      idUsuario: +token.denyonlyprimarygroupsid,
-    })
-      .then((res) => {
-        handleClose();
-        swal({
-          title: "Artista criado com sucesso!",
-          icon: "success",
-        }).then(() => {
-          props.history.push(`/homeArtist/${res.data.id}`);
-        });
-      })
-      .catch((err) => {
-        handleClose();
-        swal({
-          title: "Não foi possível registrar o artista",
-          text: err.response.data.Message,
-          icon: "warning",
-        });
-      });
-  };
-
-  const onChange = async (e: any) => {
-    setImage(await getBase64(e.target.files[0]));
-  };
-
   return (
     <React.Fragment>
       <Container>
-        <Form onSubmit={handleSubmit(onSubmit)}>
+        <Form>
           <Row>
             <Col>
               <Form.Label className="csLabel">Nome do Artista</Form.Label>
@@ -80,7 +20,6 @@ const InputsCreateArtist: React.FC<Props> = (props) => {
                 name="nome"
                 type="text"
                 minLength={1}
-                ref={register({ required: true })}
               />
             </Col>
           </Row>
@@ -93,7 +32,6 @@ const InputsCreateArtist: React.FC<Props> = (props) => {
                 id="biografia"
                 name="biografia"
                 as="textarea"
-                ref={register}
                 rows={4}
               />
             </Col>
@@ -107,7 +45,6 @@ const InputsCreateArtist: React.FC<Props> = (props) => {
                 id="integrantes"
                 name="integrantes"
                 as="textarea"
-                ref={register}
                 rows={4}
               />
             </Col>
@@ -124,8 +61,6 @@ const InputsCreateArtist: React.FC<Props> = (props) => {
                 id="imagem"
                 name="imagem"
                 className="csFileUploadButton"
-                ref={register}
-                onChange={onChange}
                 accept="image/png, image/jpeg"
               />
             </Col>
@@ -145,12 +80,6 @@ const InputsCreateArtist: React.FC<Props> = (props) => {
             </Col>
           </Row>
         </Form>
-
-        <Modal show={show} onHide={handleClose} className="csModalLoading">
-          <LoaderProvider indicator={<Bars />}>
-            <Loading />
-          </LoaderProvider>
-        </Modal>
       </Container>
     </React.Fragment>
   );

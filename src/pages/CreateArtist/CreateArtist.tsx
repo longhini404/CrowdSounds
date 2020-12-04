@@ -1,16 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { Row, Col, Container, Nav } from "react-bootstrap";
+import React from "react";
+import { Row, Col, Container } from "react-bootstrap";
 import "./createArtist.css";
 
 import Header from "../../Components/Header/Header";
-// import SearchBar from "../../Components/SearchBar/SearchBar";
+import SearchBar from "../../Components/SearchBar/SearchBar";
 import InputsCreateArtist from "../../Components/InputsCreateArtist/InputsCreateArtist";
 
-import { History } from "history";
-
-type Props = {
-  history: Pick<History, "push">;
-};
+type Props = {};
 
 const CreateArtist: React.FC<Props> = (props) => {
   return (
@@ -24,7 +20,7 @@ const CreateArtist: React.FC<Props> = (props) => {
 
         <Container>
           <Col className="pt-4">
-            {/* <SearchBar></SearchBar> */}
+            <SearchBar></SearchBar>
           </Col>
         </Container>
 
@@ -35,7 +31,7 @@ const CreateArtist: React.FC<Props> = (props) => {
         </Row>
 
         <Container>
-          <InputsCreateArtist history={props.history}></InputsCreateArtist>
+          <InputsCreateArtist></InputsCreateArtist>
         </Container>
       </div>
     </React.Fragment>

@@ -3,13 +3,10 @@ import { Row, Col, Container } from "react-bootstrap";
 import "./keepMerchandising.css";
 
 import Header from "../../Components/Header/Header";
-// import SearchBar from "../../Components/SearchBar/SearchBar";
+import SearchBar from "../../Components/SearchBar/SearchBar";
 import InputsKeepMerchandising from "../../Components/InputsKeepMerchandising/InputsKeepMerchandising";
-import { History } from "history";
 
-type Props = {
-  history: Pick<History, "push">;
-};
+type Props = {};
 
 const KeepMerchandising: React.FC<Props> = (props) => {
   return (
@@ -23,14 +20,12 @@ const KeepMerchandising: React.FC<Props> = (props) => {
 
         <Container>
           <Col className="pt-4">
-            {/* <SearchBar></SearchBar> */}
+            <SearchBar></SearchBar>
           </Col>
         </Container>
 
         <Container>
-          <InputsKeepMerchandising
-            history={props.history}
-          ></InputsKeepMerchandising>
+          <InputsKeepMerchandising></InputsKeepMerchandising>
         </Container>
       </div>
     </React.Fragment>

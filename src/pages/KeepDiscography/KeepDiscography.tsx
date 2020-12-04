@@ -3,14 +3,10 @@ import { Row, Col, Container } from "react-bootstrap";
 import "./keepDiscography.css";
 
 import Header from "../../Components/Header/Header";
-// import SearchBar from "../../Components/SearchBar/SearchBar";
+import SearchBar from "../../Components/SearchBar/SearchBar";
 import InputsKeepDiscography from "../../Components/InputsKeepDiscography/InputsKeepDiscography";
 
-import { History } from "history";
-
-type Props = {
-  history: Pick<History, "push">;
-};
+type Props = {};
 
 const KeepDiscography: React.FC<Props> = (props) => {
   return (
@@ -24,14 +20,12 @@ const KeepDiscography: React.FC<Props> = (props) => {
 
         <Container>
           <Col className="pt-4">
-            {/* <SearchBar></SearchBar> */}
+            <SearchBar></SearchBar>
           </Col>
         </Container>
 
         <Container>
-          <InputsKeepDiscography
-            history={props.history}
-          ></InputsKeepDiscography>
+          <InputsKeepDiscography></InputsKeepDiscography>
         </Container>
       </div>
     </React.Fragment>

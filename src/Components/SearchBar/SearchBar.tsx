@@ -1,11 +1,10 @@
-import React, { Component } from "react";
+import React from "react";
 import { Row, Col, Button } from "react-bootstrap";
 import "./searchBar.css";
 
 import Form from "react-bootstrap/Form";
 
 import { FaSearch } from "react-icons/fa";
-import UserService from "../../services/UserService";
 
 type Props = {};
 

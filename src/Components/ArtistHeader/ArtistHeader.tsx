@@ -1,13 +1,7 @@
-import React, { useEffect, useState } from "react";
-import {
-  Col,
-  Row,
-  Container,
-  ButtonGroup,
-  ToggleButton,
-} from "react-bootstrap";
+import React from "react";
+import { Col, Row, Container } from "react-bootstrap";
 import Header from "../Header/Header";
-// import SearchBar from "../SearchBar/SearchBar";
+import SearchBar from "../SearchBar/SearchBar";
 import {
   FaPencilAlt,
   FaHeart,
@@ -17,12 +11,9 @@ import {
 } from "react-icons/fa";
 import ProfilePictureArtist from "../ProfilePictureArtist/ProfilePictureArtist";
 import { Link } from "react-router-dom";
-import { Artist } from "../../types/Artist";
 import "./artistHeader.css";
 
-type Props = {
-  artist: Artist;
-};
+type Props = {};
 
 const ArtistHeader: React.FC<Props> = (props) => {
   return (
@@ -36,27 +27,20 @@ const ArtistHeader: React.FC<Props> = (props) => {
 
         <Container>
           <Col className="pt-4">
-            {/* <SearchBar></SearchBar> */}
+            <SearchBar></SearchBar>
           </Col>
         </Container>
 
         <Row className="pt-4">
           <Col>
-            <ProfilePictureArtist
-              data={props.artist.fotoPerfil}
-            ></ProfilePictureArtist>
-            <p className="csName">{props.artist.nome}</p>
+            <ProfilePictureArtist></ProfilePictureArtist>
+            <p className="csName">BioMorf</p>
           </Col>
         </Row>
 
         <Row className="text-center pt-4">
           <Col>
-            <Link
-              to={(location: any) => ({
-                ...location,
-                pathname: `/keepArtist/${props.artist.id}`,
-              })}
-            >
+            <Link to="keepArtist">
               <FaPencilAlt className="text-white" />
             </Link>
           </Col>

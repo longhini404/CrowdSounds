@@ -1,38 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Row, Col, Container, Nav, Button } from "react-bootstrap";
 import "./crowdfundingADM.css";
 
 import Header from "../../Components/Header/Header";
-// import SearchBar from "../../Components/SearchBar/SearchBar";
+import SearchBar from "../../Components/SearchBar/SearchBar";
 import ProfilePictureUser from "../../Components/ProfilePictureUser/ProfilePictureUser";
 import SearchBarADM from "../../Components/SearchBarADM/SearchBarADM";
 import CardCrowdfundingADM from "../../Components/CardCrowdfundingADM/CardCrowdfundingADM";
 
 import { FaPencilAlt } from "react-icons/fa";
-import { Crowdfunding } from "../../types/Crowdfunding";
-import CrowdfundingService from "../../services/CrowdfundingService";
-import swal from "sweetalert";
 
 import { Link } from "react-router-dom";
 
 type Props = {};
 
 const CrowdfundingADM: React.FC<Props> = (props) => {
-  const [crowdfundings, setCrowdfundings] = useState<Crowdfunding[]>([]);
-
-  useEffect(() => {
-    CrowdfundingService.findAll()
-      .then((res) => {
-        setCrowdfundings(res.data);
-      })
-      .catch((err) => {
-        swal({
-          title: "Não foi possível carregar os usuários",
-          icon: "warning",
-        });
-      });
-  }, []);
-
   return (
     <React.Fragment>
       <div className="csBackgroundColor">
@@ -44,13 +26,13 @@ const CrowdfundingADM: React.FC<Props> = (props) => {
 
         <Container>
           <Col className="pt-4">
-            {/* <SearchBar></SearchBar> */}
+            <SearchBar></SearchBar>
           </Col>
         </Container>
 
         <Row className="pt-2">
           <Col>
-            <ProfilePictureUser data={"a"}></ProfilePictureUser>
+            <ProfilePictureUser></ProfilePictureUser>
           </Col>
         </Row>
 
@@ -144,10 +126,7 @@ const CrowdfundingADM: React.FC<Props> = (props) => {
         </Container>
 
         <Container className="pb-4">
-          {crowdfundings &&
-            crowdfundings.map((crowdfunding) => (
-              <CardCrowdfundingADM crowdfunding={crowdfunding} />
-            ))}
+          <CardCrowdfundingADM />
         </Container>
       </div>
     </React.Fragment>

@@ -3,15 +3,10 @@ import { Row, Col, Container } from "react-bootstrap";
 import "./keepArtist.css";
 
 import Header from "../../Components/Header/Header";
-// import SearchBar from "../../Components/SearchBar/SearchBar";
+import SearchBar from "../../Components/SearchBar/SearchBar";
 import InputsKeepArtist from "../../Components/InputsKeepArtist/InputsKeepArtist";
-import { match } from "react-router-dom";
-import { History } from "history";
 
-type Props = {
-  history: Pick<History, "push">;
-  match: match<{ id: string }>;
-};
+type Props = {};
 
 const KeepArtist: React.FC<Props> = (props) => {
   return (
@@ -25,7 +20,7 @@ const KeepArtist: React.FC<Props> = (props) => {
 
         <Container>
           <Col className="pt-4">
-            {/* <SearchBar></SearchBar> */}
+            <SearchBar></SearchBar>
           </Col>
         </Container>
 
@@ -34,10 +29,7 @@ const KeepArtist: React.FC<Props> = (props) => {
         </Row>
 
         <Container>
-          <InputsKeepArtist
-            history={props.history}
-            match={props.match}
-          ></InputsKeepArtist>
+          <InputsKeepArtist></InputsKeepArtist>
         </Container>
       </div>
     </React.Fragment>

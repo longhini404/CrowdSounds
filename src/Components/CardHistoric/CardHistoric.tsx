@@ -3,34 +3,24 @@ import { Card, Image } from "react-bootstrap";
 import "./cardHistoric.css";
 
 import BioMorf from "./BioMorf.jpg";
-import { Donation } from "../../types/Donation";
 import { Link } from "react-router-dom";
 
-type Props = {
-  donation: Donation;
-};
+type Props = {};
 
 const CardHistoric: React.FC<Props> = (props) => {
   return (
     <React.Fragment>
       <Card className="csCard">
         <Card.Body>
-          <Link
-            to={(location: any) => ({
-              ...location,
-              pathname: `/homeArtist/${props.donation.crowdfunding.artista.id}`,
-            })}
-          >
+          <Link to="homeArtist">
             <Image
               src={BioMorf}
               className="csProfilePicture mb-1"
               roundedCircle
             />
           </Link>
-          <Card.Title className="csColorWhite">
-            {props.donation.crowdfunding.titulo}
-          </Card.Title>
-          <Card.Text className="csColorGrey">{props.donation.valor}</Card.Text>
+          <Card.Title className="csColorWhite">Home Studio</Card.Title>
+          <Card.Text className="csColorGrey">R$ 25,00</Card.Text>
           <hr></hr>
         </Card.Body>
       </Card>

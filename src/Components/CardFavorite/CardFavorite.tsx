@@ -6,30 +6,22 @@ import BioMorf from "./BioMorf.jpg";
 
 import { FaHeart } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { Artist } from "../../types/Artist";
 
-type Props = {
-  artist: Artist;
-};
+type Props = {};
 
 const CardFavorite: React.FC<Props> = (props) => {
   return (
     <React.Fragment>
       <Card className="csCard">
         <Card.Body>
-          <Link
-            to={(location: any) => ({
-              ...location,
-              pathname: `/homeArtist/${props.artist?.id}`,
-            })}
-          >
+          <Link to="homeArtist">
             <Image
               src={BioMorf}
               className="csProfilePicture mb-1"
               roundedCircle
             />
           </Link>
-          <Card.Title className="csTitle">{props.artist.nome}</Card.Title>
+          <Card.Title className="csTitle">BioMorf</Card.Title>
           <FaHeart className="heart" />
           <hr></hr>
         </Card.Body>
