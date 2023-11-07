@@ -4,7 +4,7 @@
 
 - $ yarn add react-bootstrap bootstrap
 
-# Deploy
+# Setup & Localhost
 
 - $ yarn install
 
